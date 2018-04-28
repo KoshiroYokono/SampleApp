@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
-  get 'comments/index'
+  get 'comments/:id/index'
+  post '/comments/create', to: 'comments#create', as: "comments"
 
   get 'favorites/index'
 
@@ -16,7 +17,6 @@ Rails.application.routes.draw do
   resources 'topics'
   post '/favorites', to: 'favorites#create'
   get '/favorites', to: 'favorites#index'
-  get '/comments/:id/index', to: 'comments#index'
-  post '/comments/create', to: 'comments#create', as: "comments"
+  # get '/comments/:id/index', to: 'comments#index'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

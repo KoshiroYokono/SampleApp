@@ -1,2 +1,30 @@
-<h1>Comments#index</h1>
-<p>Find me in app/views/comments/index.html.erb</p>
+<div class="comments-index-wrapper">
+   <div class="container">
+      <% @comments.each do |comment| %>
+         <div class="row">
+            <div class="col-md-6 col-md-offset-3">
+               <div class="comment-index-single">
+                  <h2 class="comment-author">
+                  <%= comment.user.name%>
+                  </h2>
+                  <p class="comment-text">
+                     <%= comment.content %>
+                  </p>
+               </div>
+            </div>
+         </div>
+      <% end %>
+      <div class="form-wrapper">
+         <%= form_for @comment do |f| %>
+         <div class="form-group">
+            <%= f.label :content %>
+            <%= f.text_field :content, class: 'form-control' %>
+            <%= f.hidden_field :topic_id, value: @topic.id %>
+            <!-- topic_idを設定する必要がある。 -->
+         </div>
+
+         <%= f.submit '投稿', class: 'btn btn-black btn-block' %>
+         <% end %>
+      </div>
+   </div>
+</div>
