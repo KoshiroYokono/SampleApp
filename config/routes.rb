@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  get 'comments/:id/index'
+  get 'comments/:id/index', to: 'comments#index'
   post '/comments/create', to: 'comments#create', as: "comments"
 
   get 'favorites/index'

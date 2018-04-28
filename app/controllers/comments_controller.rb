@@ -12,7 +12,7 @@ class CommentsController < ApplicationController
      @comment.topic_id = params[:comment][:topic_id]
      @topic = @comment.topic
      if @comment.save
-        redirect_to '/comments/#{@comment.topic.id}/index', notice: 'コメントを投稿しました'
+        redirect_to "/comments/#{@comment.topic.id}/index", notice: 'コメントを投稿しました'
      else
         render 'index'
         flash.now[:notice] = 'コメント投稿に失敗しました'
