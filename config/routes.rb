@@ -14,9 +14,9 @@ Rails.application.routes.draw do
   delete 'logout',to: 'sessions#destroy'
 
   resources 'users'
-  resources 'topics'
-  post '/favorites', to: 'favorites#create'
-  get '/favorites', to: 'favorites#index'
+  resources 'topics' do
+  resources 'favorites', only: [:create, :destroy, :index]
+   end
   # get '/comments/:id/index', to: 'comments#index'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

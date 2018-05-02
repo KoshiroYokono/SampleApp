@@ -15,7 +15,8 @@ class TopicsController < ApplicationController
   end
 
   def index
-     @topics = Topic.all.includes(:favorite_users)
+     @topics = Topic.all.order(created_at: :desc).includes(:favorite_users)
+     @favorite = Favorite.new
      # incluudesメソッド・・・指定したモデル（userモデル）も一緒にデータを一括で取得
      # ？紐づけているから使えるのか？？
   end

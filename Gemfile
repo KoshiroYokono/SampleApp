@@ -66,3 +66,6 @@ gem 'bootstrap-sass'
 gem 'bcrypt'
 
 gem 'carrierwave'
+
+gem 'jquery-rails'
+gem 'jquery-ui-rails'

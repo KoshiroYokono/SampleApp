@@ -1,0 +1,11 @@
+<% if !topic.favorite_users.include?(current_user) %>
+   <%= button_to topic_favorites_path(topic), method: :post, id: "favorite-button", remote: true do %>
+      <%= image_tag '/icons/heart-black.png', class: 'topic-index-icon'%>
+   <% end %>
+   <!-- いいねされていない -->
+<% else %>
+   <%= button_to topic_favorite_path(favorite, topic_id: topic.id), method: :delete, id: "favorite-button", remote: true do %>
+      <%= image_tag '/icons/heart-red.png', class: 'topic-index-icon'%>
+   <% end %>
+   <!-- いいねされている -->
+<% end %>

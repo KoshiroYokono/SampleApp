@@ -1,11 +1,14 @@
 <div class="comments-index-wrapper">
+   <%= image_tag @topic.image.url, class: 'comments-index-image'%><!--大きさがない？？-->
+   <%= image_tag '/icons/logo_in_comments.png', class: 'comments-index-logo'%>
    <div class="container">
       <% @comments.each do |comment| %>
          <div class="row">
             <div class="col-md-6 col-md-offset-3">
                <div class="comment-index-single">
                   <h2 class="comment-author">
-                  <%= comment.user.name%>
+                     <%= image_tag comment.user.image.url, class: 'comment-user-image'%>
+                     <%= comment.user.name%>
                   </h2>
                   <p class="comment-text">
                      <%= comment.content %>
@@ -14,17 +17,19 @@
             </div>
          </div>
       <% end %>
-      <div class="form-wrapper">
-         <%= form_for @comment do |f| %>
-         <div class="form-group">
-            <%= f.label :content %>
-            <%= f.text_field :content, class: 'form-control' %>
-            <%= f.hidden_field :topic_id, value: @topic.id %>
-            <!-- topic_idを設定する必要がある。 -->
+
+         <div class="form-wrapper comments-form">
+            <%= form_for @comment do |f| %>
+            <div class="form-group">
+               <%= f.label :content %>
+               <%= f.text_field :content, class: 'form-control' %>
+               <%= f.hidden_field :topic_id, value: @topic.id %>
+               <!-- 同じく大きさがない -->
+            </div>
+
+            <%= f.submit '投稿', class: 'btn btn-black btn-block' %>
+            <% end %>
          </div>
 
-         <%= f.submit '投稿', class: 'btn btn-black btn-block' %>
-         <% end %>
-      </div>
    </div>
 </div>

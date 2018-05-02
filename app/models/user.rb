@@ -9,4 +9,6 @@ class User < ApplicationRecord
    has_many :comments
 
    has_secure_password
+
+   mount_uploader :image, ImageUploader
 end
