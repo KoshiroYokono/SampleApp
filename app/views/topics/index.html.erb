@@ -1,28 +1,46 @@
 <div class="topic-index-wrapper">
    <div class="container">
       <!-- ここから繰り返し処理 -->
-      <% @topics.each do |topic| %>
-      <div class="row">
-         <div class="col-md-6 col-md-offset-3">
-            <div class="topic-index-single">
-               <h2 class="topic-author">
-                  <%= image_tag topic.user.image.url, class: 'user-image'%>
-                  <%= topic.user.name %>
-               </h2>
-               <%= link_to ("/comments/#{topic.id}/index") do%>
-                  <%= image_tag topic.image.url %>
-               <% end %>
-               <div class="favorite-buttons">
-                  <%= render partial: 'favorites/favorite', locals:{topic: topic}%>
+         <% @topics.each do |topic| %>
+         <div class="row">
+            <div class="col-md-6 col-md-offset-3">
+               <div class="topic-index-single">
+                  <h2 class="topic-author">
+                     <%= image_tag topic.user.image.url, class: 'user-image'%>
+                     <%= topic.user.name %>
+                  </h2>
+                   <%= image_tag topic.image.url, class: 'topic-image' %>
+                   <% if topic.favorite_users.include?(current_user) %>
+                     <%= link_to favorites_path(topic_id: topic.id), method: :delete do %>
+                        <%= image_tag 'icons/heart-red.png', class: 'topic-index-icon' %>
+                     <% end %>
+                  <% else %>
+                     <%= link_to favorites_path(topic_id: topic.id), method: :post do %>
+                        <%= image_tag 'icons/heart-black.png', class: 'topic-index-icon' %>
+                     <% end %>
+                  <% end %>
+                  <%= link_to ("/comments/#{topic.id}/index") do%>
+                     <%=image_tag '/icons/comment.png', class: 'topic-index-icon'%>
+                  <% end %>
+                  <p class="topic-text">
+                     <%= topic.description %>
+                  </p>
                </div>
-               <%=image_tag '/icons/comment.png', class: 'topic-index-icon'%>
-               <p class="topic-text">
-                  <%= topic.description %>
-               </p>
             </div>
          </div>
-      </div>
-      <% end %>
+         <!-- modal -->
+         <div class="slide-modal-wrapper" id="slide-modal">
+            <div class="modal">
+               <div id="close-modal">
+                  閉じる
+               </div>
+               <div class="slide">
+                  <%= image_tag topic.image.url , class: 'modal-image'%>
+               </div>
+            </div>
+         </div>
+         <% end %>
+         <!-- modal-end -->
       <!-- ここまで -->
    </div>
 </div>

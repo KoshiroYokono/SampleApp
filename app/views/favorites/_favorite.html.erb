@@ -1,11 +1,19 @@
-<% if !topic.favorite_users.include?(current_user) %>
-   <%= button_to topic_favorites_path(topic), method: :post, id: "favorite-button", remote: true do %>
-      <%= image_tag '/icons/heart-black.png', class: 'topic-index-icon'%>
-   <% end %>
-   <!-- いいねされていない -->
-<% else %>
-   <%= button_to topic_favorite_path(favorite, topic_id: topic.id), method: :delete, id: "favorite-button", remote: true do %>
-      <%= image_tag '/icons/heart-red.png', class: 'topic-index-icon'%>
-   <% end %>
-   <!-- いいねされている -->
+<% debugger %>
+<% if !current_user == topic.user %>
+    <span class="favorite">
+    <% if topic.iine?(current_user) %>
+      <%= form_for(topic.favorites.find_by(user_id: current_user.id), method: :delete, remote: true) do |f| %>
+        <%= button_tag do %>
+          <%= image_tag '/icons/heart-red.png', class: 'topic-index-icon'%>
+        <% end %>
+      <% end %>
+    <% else %>
+      <%= form_for(topic.favorites.build, remote: true) do |f| %>
+        <div><%= hidden_field_tag :topic_id, topic.id %></div>
+        <%= button_tag do %>
+          <%= image_tag '/icons/heart-black.png', class: 'topic-index-icon'%>
+        <% end %>
+      <% end %>
+    <% end %>
+    </span>
 <% end %>

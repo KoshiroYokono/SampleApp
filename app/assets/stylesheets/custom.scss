@@ -100,10 +100,12 @@ form-control {
    }
 }
 
+// topic-new
 .topic-new-wrapper {
    padding-top: 120px;
 }
 
+//topic-index
 .topic-index-wrapper {
    padding-top: 70px;
    background-color: #fafafa;
@@ -143,14 +145,105 @@ form-control {
       }
    }
 }
-.comments-index-image {
+//modal-slide
+.slide-modal-wrapper {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+  z-index: 100;
+  display: none;
+  .modal {
+    position: absolute;
+    margin: auto;
+    background-color: #e6ecf0;
+    padding: 20px 0 40px;
+    // border-radius: 10px;
+    width: 80%;
+    height: 80%;
+    text-align: center;
+    display: block;
+    .modal-image {
+      width: 100%;
+   }
+  }
+}
+
+// topic-edit
+.topic-edit-wrapper {
+   padding-top: 120px;
+   .topic-image {
+      width: 100%;
+   }
+}
+
+// ここからcomments
+.topic-wrapper {
    position: fixed;
    top: 10%;
    left: 20px;
-   height: 300px;
    width: 400px;
-   border: 3px solid #e6ecf0;
-   border-radius: 3px;
+   .topic-image-in-comments {
+      height: 300px;
+      width: 100%;
+      border: 3px solid #e6ecf0;
+      border-radius: 3px;
+   }
+   .balloon1 {
+       width: 100%;
+       margin: 1.5em 0;
+       overflow: hidden;
+   }
+
+   .balloon1 .faceicon {
+       float: left;
+       margin-right: -90px;
+       width: 80px;
+    }
+
+   .balloon1 .faceicon .user-image{
+       width: 100%;
+       height: auto;
+       border: solid 3px #d7ebfe;
+       border-radius: 50%;
+    }
+
+   .balloon1 .chatting {
+       width: 100%;
+    }
+
+   .says {
+       display: inline-block;
+       position: relative;
+       margin: 5px 0 0 105px;
+       padding: 17px 13px;
+       border-radius: 12px;
+       background: #d7ebfe;
+    }
+
+   .says:after {
+       content: "";
+       display: inline-block;
+       position: absolute;
+       top: 18px;
+       left: -24px;
+       border: 12px solid transparent;
+       border-right: 12px solid #d7ebfe;
+   }
+
+   .says p {
+       margin: 0;
+       padding: 0;
+   }
+      .user-menus li{
+         list-style: none;
+         float: right;
+         text-decoration: underline;
+         font-size: 16px;
+         margin-right: 10px;
+      }
 }
 .comments-index-logo {
    position: fixed;

@@ -1,0 +1,6 @@
+<%= form_for(@favorite,method: :delete) do |f| %>
+  <div><%= hidden_field_tag :topic_id, topic.id %></div>
+  <%= button_tag type: :submit do %>
+    <%= image_tag '/icons/heart-red.png', class: 'topic-index-icon'%>
+  <% end %>
+<% end %>

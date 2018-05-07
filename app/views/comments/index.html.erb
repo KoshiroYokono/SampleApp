@@ -1,5 +1,29 @@
+<div class="topic-wrapper">
+   <%= image_tag @topic.image.url, class: 'topic-image-in-comments'%>
+   <!--吹き出しはじまり-->
+   <div class="balloon1">
+        <div class="faceicon">
+           <%= image_tag @topic.user.image.url, class: 'user-image'%>
+        </div>
+        <div class="chatting">
+           <div class="says">
+             <p><%=@topic.description%></p>
+           </div>
+        </div>
+   </div>
+<!--吹き出し終わり-->
+   <ul class="user-menus">
+      <li>
+         <%= link_to "編集", edit_topic_path(@topic, topic_id: @topic.id), style: "color: #8899a6" %>
+      </li>
+      <li>
+         <%= link_to "削除", topic_path(@topic, topic_id: @topic.id), style: "color: #8899a6", data: {confirm: "本当に削除しますか？"}, method: :delete %>
+      </li>
+   </ul>
+</div>
+
 <div class="comments-index-wrapper">
-   <%= image_tag @topic.image.url, class: 'comments-index-image'%><!--大きさがない？？-->
+   <!--大きさがない？？-->
    <%= image_tag '/icons/logo_in_comments.png', class: 'comments-index-logo'%>
    <div class="container">
       <% @comments.each do |comment| %>
